@@ -1,22 +1,63 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import '../Styles/styles.css';
 
-
-const Card = ({ name, username, id }) => {
-
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-  }
-
+const Card = ({ dentist, addToFavorites, removeFromFavorites, showRemoveButton }) => {
   return (
     <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
+      <Link to={`/dentist/${dentist.id}`}>
+        <img src="/images/doctor.jpg" alt="Dentist" className="card-image" />
+      </Link>
 
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
+      <h3 className="card-title">{dentist.name}</h3>
+      <p className="card-username">{dentist.username}</p>
 
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
+      {!showRemoveButton && (
+        <button
+          className="favorite-button"
+          onClick={() => addToFavorites(dentist)}
+        >
+          <img
+            src="/images/Star.icon.png" // Ruta del ícono de estrella
+            alt="Star icon"
+            className="star-icon"
+          />
+          Add to Favorites
+        </button>
+      )}
+
+      {showRemoveButton && (
+        <button
+          className="remove-button"
+          onClick={() => {
+            console.log('Removing:', dentist);
+            removeFromFavorites(dentist);
+          }}
+        >
+          REMOVE FAV
+        </button>
+      )}
+
+      <Link to={`/dentist/${dentist.id}`} className="details-link">
+        Ver detalles
+      </Link>
     </div>
   );
+};
+
+Card.propTypes = {
+  dentist: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+  }).isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired,
+  showRemoveButton: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  showRemoveButton: false,
 };
 
 export default Card;
