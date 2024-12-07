@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer className={`footer ${theme}`}>
-      <p>Powered by</p>
+     
       <img src="/images/DH.ico" alt="DH-logo" />
 
 

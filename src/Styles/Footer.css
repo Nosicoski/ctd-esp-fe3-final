@@ -1,0 +1,39 @@
+    /* Footer.css */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.9rem;
+    border-top: 1px solid #ccc;
+    margin-top: 2rem;
+  }
+  
+  /* General theme styles */
+  .footer p {
+    margin-right: 0.5rem;
+    color: inherit;
+  }
+  
+  .footer img {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+  }
+  
+  /* Light theme styles */
+  .footer.light {
+    background-color: #f9f9f9;
+    color: #333;
+    border-top: 1px solid #ddd;
+  }
+  
+  /* Dark theme styles */
+  .footer.dark {
+    background-color: #333;
+    color: #f9f9f9;
+    border-top: 1px solid #444;
+  }
+  

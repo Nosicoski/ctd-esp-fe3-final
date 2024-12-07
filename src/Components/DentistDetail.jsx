@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Para acceder al ID de la URL
+import '../Styles/DentistDetail.css';
 
 
 const DentistDetail = () => {
@@ -24,28 +25,24 @@ const DentistDetail = () => {
   }, [id]); // Vuelve a ejecutar cuando el ID cambie
 
   if (loading) {
-    return <p className="loading-message">Cargando detalles del dentista...</p>;
+    return <p>Cargando detalles del dentista...</p>;
   }
 
   if (!dentist) {
-    return <p className="error-message">No se encontró al dentista.</p>;
+    return <p>No se encontró al dentista.</p>;
   }
 
   return (
-    <div className="dentist-detail-container">
+    <div className="dentist-detail-container ">
       <h1>{dentist.name}</h1>
       <p><strong>Username:</strong> {dentist.username}</p>
       <p><strong>Email:</strong> {dentist.email}</p>
       <p><strong>Phone:</strong> {dentist.phone}</p>
-      <p>
-        <strong>Website:</strong> 
-        <a href={`http://${dentist.website}`} target="_blank" rel="noopener noreferrer">
-          {dentist.website}
-        </a>
-      </p>
+      <p><strong>Website:</strong> <a href={`http://${dentist.website}`} target="_blank" rel="noopener noreferrer">{dentist.website}</a></p>
       <p><strong>Company:</strong> {dentist.company.name}</p>
     </div>
   );
 };
 
 export default DentistDetail;
+
